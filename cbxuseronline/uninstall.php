@@ -19,12 +19,12 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * The code that runs during plugin uninstall.
  */
 function uninstall_cbxuseronline() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-settings.php';
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-helper.php';
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-uninstall.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUseronlineSetting.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUserOnlineHelper.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUseronlineUninstall.php';
 
 
-	CBXUserOnline_Uninstall::uninstall();
+	CBXUseronlineUninstall::uninstall();
 }//end function uninstall_cbxuseronline
 
 if ( ! defined( 'CBX_USERONLINE_PLUGIN_NAME' ) ) {

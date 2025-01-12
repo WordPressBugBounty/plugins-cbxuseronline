@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 						<?php do_action( 'cbxuseronline_wpheading_wrap_left_before', 'dashboard' ); ?>
                         <h1 class="wp-heading-inline wp-heading-inline-cbxuseronline">
 							<?php esc_html_e( 'User Online Dashboard', 'cbxuseronline' ); ?>
-                            <a href="#" id="refreshtimenow_trig" class="button ml-10 button error"><?php esc_attr_e( 'Refresh Now', 'cbxuseronlineproaddon' ); ?></a>
+                            <a href="#" id="refreshtimenow_trig" class="button ml-10 button error ld-ext-right"><?php esc_attr_e( 'Refresh Now', 'cbxuseronline' ); ?><span class="ld ld-spin ld-ring"></span></a>
                         </h1>
 						<?php do_action( 'cbxuseronline_wpheading_wrap_left_after', 'dashboard' ); ?>
                     </div>
@@ -113,20 +113,29 @@ if ( ! defined( 'WPINC' ) ) {
 						$output_online_count = '<p style="margin-bottom: 10px;">' . $output_online_count . '</p>';
 
 						$mostuseronline_html = '';
-						$mostuser            = get_option( 'cbxuseronline_mostonline' );
+						$mostuser            = get_option( 'cbxuseronline_mostonline', [] );
 
 						$mostuser_count = isset( $mostuser['count'] ) ? intval( $mostuser['count'] ) : 0;
-						$mostuser_date  = isset( $mostuser['date'] ) ? intval( $mostuser['date'] ) : 0;
+						$mostuser_date  = isset( $mostuser['date'] ) ? sanitize_text_field( $mostuser['date'] ) : '';
 
 						$mysql_date = false;
 
-						if ( $mysql_date ) {
-							/* translators: 1: Most user count date 2. Most user count time */
-							$mostuser_date = mysql2date( sprintf( esc_html_x( '%1$s @ %1$s', 'Date @ time','cbxuseronline' ), get_option( 'date_format', __( 'F j, Y' ) ), get_option( 'time_format', __( 'g:i a' ) ) ), $mostuser_date, true );
-						} else {
-							/* translators: 1: Most user count date 2. Most user count time */
-							$mostuser_date = date_i18n( sprintf( esc_html_x( '%1$s @ %2$s', 'Date @ time', 'cbxuseronline' ), get_option( 'date_format', __( 'F j, Y' ) ), get_option( 'time_format', __( 'g:i a' ) ) ), $mostuser_date );
+						$date_format = esc_html( get_option( 'date_format', __( 'F j, Y' ) ) ); //phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+						$time_format = esc_html( get_option( 'time_format', __( 'g:i a' ) ) ); //phpcs:ignore WordPress.WP.I18n.MissingArgDomain
 
+						/* translators: 1: Date 2. Time */
+						$formatted_string = sprintf( esc_html_x( '%1$s @ %2$s', 'Date @ time', 'cbxuseronline' ), $date_format, $time_format );
+
+						/*if ( $mysql_date ) {
+							$mostuser_date = mysql2date( sprintf( esc_html_x( '%1$s @ %1$s', 'Date @ time','cbxuseronline' ), get_option( 'date_format', __( 'F j, Y', 'cbxuseronline' ) ), get_option( 'time_format', __( 'g:i a', 'cbxuseronline' ) ) ), $mostuser_date, true );
+						} else {
+							$mostuser_date = date_i18n( sprintf( esc_html_x( '%1$s @ %2$s', 'Date @ time', 'cbxuseronline' ), get_option( 'date_format', __( 'F j, Y', 'cbxuseronline' ) ), get_option( 'time_format', __( 'g:i a', 'cbxuseronline' ) ) ), $mostuser_date );
+						}*/
+
+						if ( $mysql_date ) {
+							$mostuser_date = mysql2date( $formatted_string, $mostuser_date, true );
+						} else {
+							$mostuser_date = date_i18n( $formatted_string, strtotime( $mostuser_date ) );
 						}
 
 						/* translators: 1: Most user count 2. Most user countr date */

@@ -490,42 +490,6 @@
 				}
 			);
 		});//end click #reset_data_trigger
-
-		//send ajax request for refresh field
-		/*$('.refreshtimenow_wrap').on('click', 'a.refreshtimenow_trig', function (e) {
-			e.preventDefault();
-
-			let $this   = $(this);
-			let $parent = $this.closest('.refreshtimenow_wrap');
-			let $busy   = Number($this.data('busy'));
-
-			if ($busy === 0) {
-				$this.data('busy', 1);
-				$this.addClass('disabled');
-				$parent.find('.refreshtimenow_status').hide();
-
-				$.ajax({
-					type    : 'post',
-					dataType: 'json',
-					url     : cbxuseronline_setting.ajaxurl,
-					data    : {
-						action  : 'refresh_onlineuser',
-						security: cbxuseronline_setting.nonce
-					},
-					success : function (data, textStatus, XMLHttpRequest) {
-						$this.data('busy', 0);
-						$this.removeClass('disabled');
-						$parent.find('.refreshtimenow_status').show();
-						$parent.find('.refreshtimenow_status p').text(data.message);
-					},
-					error   : function (jqXHR, textStatus, errorThrown) {
-						$this.data('busy', 0);
-						$this.removeClass('disabled');
-					}
-				});// end of ajax
-			}
-
-		});	*/
 	});
 
 })(jQuery);

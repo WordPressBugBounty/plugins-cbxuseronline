@@ -16,7 +16,7 @@
  * Plugin Name:       CBX User Online & Last Login
  * Plugin URI:        https://codeboxr.com/product/cbx-user-online-for-wordpress
  * Description:       This plugin shows WordPress online users and records last login
- * Version:           1.2.14
+ * Version:           1.3.1
  * Author:            codeboxr
  * Author URI:        https://codeboxr.com
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 //plugin definition specific constants
 defined( 'CBX_USERONLINE_PLUGIN_NAME' ) or define( 'CBX_USERONLINE_PLUGIN_NAME', 'cbxuseronline' );
-defined( 'CBX_USERONLINE_PLUGIN_VERSION' ) or define( 'CBX_USERONLINE_PLUGIN_VERSION', '1.2.14' );
+defined( 'CBX_USERONLINE_PLUGIN_VERSION' ) or define( 'CBX_USERONLINE_PLUGIN_VERSION', '1.3.1' );
 defined( 'CBX_USERONLINE_PLUGIN_BASE_NAME' ) or define( 'CBX_USERONLINE_PLUGIN_BASE_NAME', plugin_basename( __FILE__ ) );
 defined( 'CBX_USERONLINE_PLUGIN_ROOT_PATH' ) or define( 'CBX_USERONLINE_PLUGIN_ROOT_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'CBX_USERONLINE_PLUGIN_ROOT_URL' ) or define( 'CBX_USERONLINE_PLUGIN_ROOT_URL', plugin_dir_url( __FILE__ ) );
@@ -54,13 +54,13 @@ function activate_cbxuseronline() {
 		return;
 	}
 
-	$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$plugin = isset( $_REQUEST['plugin'] ) ? sanitize_text_field(wp_unslash($_REQUEST['plugin'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	check_admin_referer( "activate-plugin_{$plugin}" );
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-helper.php';
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUserOnlineHelper.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUserOnlineActivator.php';
 
-	CBXUserOnline_Activator::activate();
+	CBXUserOnlineActivator::activate();
 }//end function  activate_cbxuseronline
 
 /**
@@ -68,11 +68,11 @@ function activate_cbxuseronline() {
  * This action is documented in includes/class-cbxuseronline-deactivator.php
  */
 function deactivate_cbxuseronline() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-helper.php';
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUserOnlineHelper.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/CBXUserOnlineDeactivator.php';
 
 
-	CBXUserOnline_Deactivator::deactivate();
+	CBXUserOnlineDeactivator::deactivate();
 }//end function deactivate_cbxuseronline
 
 
@@ -81,7 +81,7 @@ register_deactivation_hook( __FILE__, 'deactivate_cbxuseronline' );
 
 
 
-require plugin_dir_path( __FILE__ ) . 'includes/class-cbxuseronline.php'; //main core plugin file
+require plugin_dir_path( __FILE__ ) . 'includes/CBXUserOnline.php'; //main core plugin file
 
 
 /**

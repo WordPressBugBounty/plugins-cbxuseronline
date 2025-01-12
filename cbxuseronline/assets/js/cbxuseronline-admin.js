@@ -24,6 +24,7 @@
 
             let $this = $(this);
             $this.addClass('disabled');
+            $this.addClass('running');
 
             $.ajax({
                 type    : 'post',
@@ -36,6 +37,7 @@
                 success : function (data, textStatus, XMLHttpRequest) {
 
                     $this.removeClass('disabled');
+                    $this.removeClass('running');
 
 
                     if (data.success) {
@@ -48,6 +50,7 @@
                 error   : function (jqXHR, textStatus, errorThrown) {
                     $this.data('busy', 0);
                     $this.removeClass('disabled');
+                    $this.removeClass('running');
                 }
             });// end of ajax
 

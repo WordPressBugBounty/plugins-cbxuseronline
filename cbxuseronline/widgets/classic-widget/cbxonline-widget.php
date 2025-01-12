@@ -62,11 +62,9 @@ class CBXOnlineWidget extends WP_Widget {
 	 * @param  array args  The array of form elements
 	 * @param  array instance The current instance of the widget
 	 *
-	 * @return int
+	 * @return string
 	 */
 	public function widget( $args, $instance ) {
-
-
 		if ( ! isset ( $args['widget_id'] ) ) {
 			$args['widget_id'] = $this->id;
 		}
@@ -109,7 +107,7 @@ class CBXOnlineWidget extends WP_Widget {
 		$instance = apply_filters( 'cbxuseronline_widget_widget', $instance, $checked_fields );
 
 
-		$instance['page'] = ( isset( $instance['page'] ) && intval( $instance['page'] ) ) ? esc_url( $_SERVER['REQUEST_URI'] ) : '';
+		$instance['page'] = ( isset( $instance['page'] ) && intval( $instance['page'] ) ) ? sanitize_text_field( wp_unslash($_SERVER['REQUEST_URI']) ) : ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		$scope            = 'widget';
 
 
@@ -120,7 +118,6 @@ class CBXOnlineWidget extends WP_Widget {
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		print $widget_string;
-
 	}//end widget
 
 

@@ -84,7 +84,7 @@ class CBXOnlineElementorWidget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'cbxuseronline_memberlist',
 			[
-				'label'        => esc_html__( 'Show Memberlist', 'plugin-domain' ),
+				'label'        => esc_html__( 'Show Memberlist', 'cbxuseronline' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'     => esc_html__( 'Show', 'cbxuseronline' ),
 				'label_off'    => esc_html__( 'Hide', 'cbxuseronline' ),

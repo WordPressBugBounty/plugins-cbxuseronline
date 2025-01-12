@@ -1,9 +1,9 @@
 ===  CBX User Online & Last Login ===
 Contributors: codeboxr, manchumahara
 Tags: wordpress user online,useronline,bbpress,buddypress,last login
-Requires at least: 3.5
-Tested up to: 6.6.2
-Stable tag: 1.2.14
+Requires at least: 5.3
+Tested up to: 6.7.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,13 @@ Cookie name is "cbxuseronline-cookie", value is created dynamically
 
 
 == Changelog ==
+= 1.3.1 =
+* [new] New dashboard style
+* [new] Plugin check version V1.3.1 compatible
+* [updated] WordPress core V6.7.1 compatible
+* [new] SVG icon added everywhere
+* [updated] Pro Addon V1.1.3 released
+
 = 1.2.14 =
 * [improvement] WordPress 6.6.2 version compatible
 * [pro addon] Pro Addon V1.1.0 Released

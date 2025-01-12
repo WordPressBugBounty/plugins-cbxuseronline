@@ -34,7 +34,7 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
                     </div>
                     <div class="wp-heading-wrap-right pull-right">
 						<?php do_action( 'cbxuseronline_wpheading_wrap_right_before', 'support' ); ?>
-                        <a href="<?php echo esc_url(admin_url( 'admin.php?page=cbxuseronline-settings' )); ?>"
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=cbxuseronline-settings' ) ); ?>"
                            class="button outline primary pull-right"><?php esc_attr_e( 'Global Settings', 'cbxuseronline' ); ?></a>
 						<?php do_action( 'cbxuseronline_wpheading_wrap_right_after', 'support' ); ?>
                     </div>
@@ -57,14 +57,13 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
                                     <div class="feature-card-body static">
                                         <div class="feature-card-header">
                                             <a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank">
-                                                <img src="https://codeboxr.com/wp-content/uploads/productshots/8173-profile.png"
-                                                     alt="Pro features for CBX Tour plugin"/>
+												<?php $image_url = 'https://codeboxr.com/wp-content/uploads/productshots/8173-profile.png'; ?>
+                                                <?php //phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>
+                                                <img src="<?php echo esc_url( $image_url ); ?>" alt="Pro features for CBX Tour plugin"/>
                                             </a>
                                         </div>
                                         <div class="feature-card-description">
-                                            <h3>
-                                                <a href="<?php echo esc_url( $plugin_url ); ?>"
-                                                   target="_blank">CBX User Online & Last Login Pro addon</a></h3>
+                                            <h3><a href="<?php echo esc_url( $plugin_url ); ?>" target="_blank">CBX User Online & Last Login Pro addon</a></h3>
                                             <p>Pro features for CBX User Online & Last Login</p>
                                         </div>
                                     </div>
@@ -81,6 +80,18 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
                         </div>
                     </div>
                     <div class="content">
+                        <div class="cbx-backend-settings-row">
+                            <p>
+                                Version - 1.3.1
+                            </p>
+                            <ul>
+                                <li>[new] New dashboard style</li>
+                                <li>[new] Plugin check version V1.3.1 compatible</li>
+                                <li>[updated] WordPress core V6.7.1 compatible</li>
+                                <li>[new] SVG icon added everywhere</li>
+                                <li>[updated] Pro Addon V1.1.3 released</li>
+                            </ul>
+                        </div>
                         <div class="cbx-backend-settings-row">
                             <p>
                                 Version - 1.2.13
@@ -100,29 +111,6 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
                                 <li>[pro addon] Pro Addon V1.1.0 Released</li>
                             </ul>
                         </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 1.2.11
-                            </p>
-                            <ul>
-                                <li>[improvement] Pro addon compatibility checked</li>
-                                <li>[improvement] On plugin activation checking different condition is improved in terms of performance and memory usages</li>
-                                <li>[pro addon] Pro Addon V1.0.16 Released</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 1.2.10
-                            </p>
-                            <ul>
-                                <li>[new] New uninstall method</li>
-                                <li>[new] Settings Export/Import</li>
-                                <li>[new] Full setting reset</li>
-                                <li>[new] Sanitization and Escaping improved</li>
-                                <li>[new] New documentation page</li>
-                                <li>[Pro Addon] New pro addon released</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="cbx-backend-card dashboard-changelog">
@@ -132,6 +120,18 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
                         </div>
                     </div>
                     <div class="content">
+                        <div class="cbx-backend-settings-row">
+                            <p>
+                                Version - 1.1.3
+                            </p>
+                            <ul>
+                                <li>[new] New dashboard style</li>
+                                <li>[new] Plugin check version V1.3.1 compatible</li>
+                                <li>[updated] WordPress core V6.7.1 compatible</li>
+                                <li>[new] SVG icon added everywhere</li>
+                                <li>[Updated] Core plugin V1.3.1 released</li>
+                            </ul>
+                        </div>
                         <div class="cbx-backend-settings-row">
                             <p>
                                 Version - 1.1.1
@@ -147,15 +147,6 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
                             </p>
                             <ul>
                                 <li>[improvements] Security improvements</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 1.0.15
-                            </p>
-                            <ul>
-                                <li>[fixed] Bug fixed related with constant FILTER_SANITIZE_STRING</li>
-                                <li>[improvements] Dashboard revamped</li>
                             </ul>
                         </div>
                     </div>
@@ -230,7 +221,7 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
 							'https://codeboxr.com/product/cbx-tour-user-walkthroughs-guided-tours-for-wordpress/' => 'CBX Tour – User Walkthroughs/Guided Tours',
 							'https://codeboxr.com/product/show-next-previous-article-for-wordpress'               => 'CBX Next Previous Article ',
 							'https://codeboxr.com/product/cbx-wordpress-bookmark/'                                => 'CBX Bookmark & Favorite',
-							'https://codeboxr.com/product/cbx-changelog-for-wordpress/' => 'CBX Changelog',
+							'https://codeboxr.com/product/cbx-changelog-for-wordpress/'                           => 'CBX Changelog',
 							'https://codeboxr.com/product/cbx-currency-converter-for-wordpress/'                  => 'CBX Currency Converter',
 							'https://codeboxr.com/product/cbx-email-logger-for-wordpress/'                        => 'CBX Email SMTP & Logger',
 							'https://codeboxr.com/product/cbx-petition-for-wordpress/'                            => 'CBX Petition',
@@ -243,13 +234,13 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
 
 						foreach ( $top_plugins as $link => $title ) {
 							echo '<div class="cbx-backend-settings-row">
-                            <a href="' . esc_url($link) . '" target="_blank">
+                            <a href="' . esc_url( $link ) . '" target="_blank">
                                 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <defs/>
                                     <path d="M16.4 9.1L12.2 5c-.3-.3-.7-.3-1-.2s-.6.5-.6.9v1.7H4.2c-.5 0-.9.4-.9.9v3.4c0 .2.1.5.3.7.2.2.4.3.7.3h6.4v1.7c0 .4.2.7.6.9.4.1.8.1 1-.2l4.1-4.2c.4-.5.4-1.3 0-1.8z"
                                           fill="currentColor"/>
                                 </svg>
-                                ' . esc_html($title) . '</a>
+                                ' . esc_html( $title ) . '</a>
                         </div>';
 						}
 						?>
@@ -283,13 +274,13 @@ $doc_url    = CBXUseronlineHelper::url_utmy( 'https://codeboxr.com/doc/cbxuseron
 									$url = $block->get_permalink();
 									$url = CBXUseronlineHelper::url_utmy( $url ); ?>
                                     <div class="cbx-backend-settings-row">
-                                        <a href="<?php echo esc_url($url) ?>" target="_blank">
+                                        <a href="<?php echo esc_url( $url ) ?>" target="_blank">
                                             <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                 <defs/>
                                                 <path d="M16.4 9.1L12.2 5c-.3-.3-.7-.3-1-.2s-.6.5-.6.9v1.7H4.2c-.5 0-.9.4-.9.9v3.4c0 .2.1.5.3.7.2.2.4.3.7.3h6.4v1.7c0 .4.2.7.6.9.4.1.8.1 1-.2l4.1-4.2c.4-.5.4-1.3 0-1.8z"
                                                       fill="currentColor"/>
                                             </svg>
-											<?php echo esc_html($block->get_title()); ?></a>
+											<?php echo esc_html( $block->get_title() ); ?></a>
                                     </div>
 									<?php
 								}//end foreach
